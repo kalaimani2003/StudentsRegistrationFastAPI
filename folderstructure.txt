@@ -1,0 +1,51 @@
+fastapi_backend/
+│
+├── app/
+│   ├── __init__.py
+│   ├── main.py                 # Entry point for FastAPI
+│   │
+│   ├── api/                    # All route files
+│   │   ├── __init__.py
+│   │   ├── students.py
+│   │   ├── mentors.py
+│   │   ├── batches.py
+│   │   ├── payments.py
+│   │   └── filters.py
+│   │
+│   ├── models/                 # SQLAlchemy models (DB tables)
+│   │   ├── __init__.py
+│   │   ├── student_model.py
+│   │   ├── mentor_model.py
+│   │   ├── batch_model.py
+│   │   ├── payment_model.py
+│   │   └── ...
+│   │
+│   ├── schemas/                # Pydantic schemas (Request/Response models)
+│   │   ├── __init__.py
+│   │   ├── student_schema.py
+│   │   ├── mentor_schema.py
+│   │   ├── batch_schema.py
+│   │   ├── payment_schema.py
+│   │   └── ...
+│   │
+│   ├── crud/                   # DB operations logic
+│   │   ├── __init__.py
+│   │   ├── student_crud.py
+│   │   ├── mentor_crud.py
+│   │   ├── batch_crud.py
+│   │   ├── payment_crud.py
+│   │   └── ...
+│   │
+│   ├── database/               # DB connection and session
+│   │   ├── __init__.py
+│   │   └── connection.py
+│   │
+│   └── core/                   # (Optional) for configs, utils, auth
+│       ├── config.py
+│       ├── security.py
+│       └── ...
+│
+├── .env                        # Environment variables (e.g., DB URL)
+├── .gitignore
+├── requirements.txt
+└── README.md

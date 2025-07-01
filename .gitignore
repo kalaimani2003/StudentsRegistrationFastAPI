@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.python-version
+
+# VS Code editor settings
+.vscode/
+
+# IDEs and editors
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Test reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Python-pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# FastAPI specific (optional)
+
+# instance/
+# *.db
+# *.sqlite3
+
+# dotenv
+.env
+.env.*
+
+# Build
+build/
+dist/
+*.egg-info/
