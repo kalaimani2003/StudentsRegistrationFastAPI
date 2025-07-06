@@ -7,6 +7,9 @@ from sqlalchemy.orm import Session
 from app.schemas.student_schema import StudentCreate, StudentOut
 from app.crud.student_crud import create_student
 from app.database.connection import get_db
+from typing import List, Optional
+from app.models.student_model import Student
+
 
 router = APIRouter(
     prefix="/master",
@@ -14,6 +17,7 @@ router = APIRouter(
 )
 
 UPLOAD_FOLDER = "assets/studentsphotos"
+
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @router.post("/studentRegister", response_model=StudentOut)
@@ -59,6 +63,8 @@ async def register_student(
         with open(file_location, "wb") as buffer:
             shutil.copyfileobj(studentPhoto.file, buffer)
         photo_path = f"/assets/studentsphotos/{filename}"
+        # print(photo_path)
+
 
     # Handle base64 upload
     elif studentPhotoBase64:
@@ -70,6 +76,8 @@ async def register_student(
             with open(file_location, "wb") as f:
                 f.write(data)
             photo_path = f"/assets/studentsphotos/{filename}"
+            # print(photo_path)
+
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Invalid base64 image: {str(e)}")
 
@@ -80,3 +88,11 @@ async def register_student(
         db.refresh(student)
 
     return student
+
+
+@router.get("/getStudents", response_model=List[StudentOut])
+def get_students(id: Optional[int] = None, db: Session = Depends(get_db)):
+    if id:
+        student = db.query(Student).filter(Student.id == id).all()
+        return student
+    return db.query(Student).all()

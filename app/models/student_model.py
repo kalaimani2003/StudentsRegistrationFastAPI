@@ -15,4 +15,4 @@ class Student(Base):
     totalPayment = Column(Float, nullable=False)
     noOfDues = Column(Integer, nullable=False)
     remarks = Column(String(255), nullable=True)
-    status = Column(String(20), default="Active")
+    status = Column(String(20), default=1)
