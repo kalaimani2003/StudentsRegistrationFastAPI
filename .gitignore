@@ -59,3 +59,13 @@ dmypy.json
 build/
 dist/
 *.egg-info/
+
+# Image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.webp
+*.svg
+*.heic

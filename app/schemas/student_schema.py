@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-from datetime import date
+
 
 # ▶️ Used when creating a student
 class StudentCreate(BaseModel):
@@ -13,11 +13,22 @@ class StudentCreate(BaseModel):
     totalPayment: float
     noOfDues: int
     remarks: Optional[str] = None
-    status: Optional[str] = 1
+    status: Optional[str] = "1"
 
-# ✅ Used for response (after saving student)
-class StudentOut(StudentCreate):
+
+# ▶️ Used for reading student data (output)
+class StudentOut(BaseModel):
     id: int
+    studentName: str
+    batchName: str
+    contactNumber: str
+    guardianNumber: Optional[str]
+    initialPayment: float
+    totalPayment: float
+    noOfDues: int
+    remarks: Optional[str]
+    studentPhoto: Optional[str]
+    status: Optional[str]
 
     class Config:
-        orm_mode = True
+        from_attributes = True  # ✅ or use orm_mode = True
